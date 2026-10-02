@@ -4,9 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="毎日ひとつ、知ると世界の見え方が少し変わる言葉を。">
+<meta name="theme-color" content="#e6eae6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101418" media="(prefers-color-scheme: dark)">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="日々是衒学">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <!-- head:start -->
 <title>日々是衒学</title>
-<link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@1&family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
@@ -15,96 +23,121 @@
 </head>
 <body>
 <!-- body:start -->
-<div class="page">
-  <header class="masthead">
-    <p class="brand">日々是衒学</p>
-    <p class="tagline">毎日ひとつ、知ると世界の見え方が少し変わる言葉を。</p>
+<div class="app" lang="ja">
+  <header class="appbar">
+    <button type="button" class="appbar-back" id="back" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      <span>ことば帳</span>
+    </button>
+    <p class="appbar-title">日々是衒学</p>
   </header>
 
-  <main>
-    <article class="sheet" id="sheet" aria-live="polite">
-      <div class="perforation" aria-hidden="true"></div>
-      <header class="sheet-head">
-        <div class="date" id="date">
-          <span class="date-month" id="date-month"></span>
-          <span class="date-day" id="date-day"></span>
-          <span class="date-week" id="date-week"></span>
-        </div>
-        <div class="sheet-meta">
-          <span class="day-count" id="day-count"></span>
-          <span class="seal"><span class="sr-only" id="genre-label"></span><span aria-hidden="true" id="genre"></span></span>
-        </div>
-      </header>
+  <!-- 今日の言葉（日付の移動つき）と、ことば帳から開いた言葉 -->
+  <main class="view" id="view-card">
+    <div class="day-switch" id="day-switch">
+      <button type="button" class="round-btn" id="prev" aria-label="前の日">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <div class="day-label" aria-live="polite">
+        <p class="day-date" id="day-date"></p>
+        <p class="day-count" id="day-count"></p>
+      </div>
+      <button type="button" class="round-btn" id="next" aria-label="次の日">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+    <button type="button" class="pill-btn" id="to-today" hidden>今日の言葉に戻る</button>
+    <p class="detail-when" id="detail-when" hidden></p>
 
+    <article class="card" id="card">
+      <p class="genre-chip" id="genre"></p>
       <div class="headword">
-        <h1 class="term" id="term"></h1>
+        <h1 class="term jp" id="term"></h1>
         <p class="reading" id="reading"></p>
         <p class="original" id="original" lang="en"></p>
       </div>
-
-      <p class="gist" id="gist"></p>
-
+      <section class="gist-block">
+        <h2 class="label">ひとことで</h2>
+        <p class="gist jp" id="gist"></p>
+      </section>
       <section class="block">
         <h2 class="label">由来</h2>
-        <p id="story"></p>
+        <p class="jp" id="story"></p>
       </section>
       <section class="block">
         <h2 class="label">見え方が変わるところ</h2>
-        <p id="lens"></p>
+        <p class="jp" id="lens"></p>
       </section>
       <section class="block flex-block">
-        <h2 class="label">ひけらかすなら</h2>
-        <p class="flex-line" id="flex"></p>
+        <h2 class="label">使ってみる</h2>
+        <p class="flex-line jp" id="flex"></p>
       </section>
-
-      <div class="known" role="group" aria-labelledby="known-label">
-        <span class="known-label" id="known-label">この語、知ってた？</span>
-        <div class="known-buttons">
-          <button type="button" class="chip" id="known-yes" data-known="known" aria-pressed="false">知ってた</button>
-          <button type="button" class="chip" id="known-no" data-known="new" aria-pressed="false">知らなかった</button>
-        </div>
-      </div>
     </article>
 
-    <nav class="pager" id="pager" aria-label="日付の移動">
-      <button type="button" class="pager-btn" id="prev">‹ 前の日</button>
-      <button type="button" class="pager-btn pager-today" id="today">今日</button>
-      <button type="button" class="pager-btn" id="next">次の日 ›</button>
-    </nav>
-
-    <details class="drawer" id="archive">
-      <summary>
-        <span class="drawer-title">これまでの語</span>
-        <span class="drawer-note" id="archive-note"></span>
-      </summary>
-      <ol class="archive-list" id="archive-list"></ol>
-    </details>
-
-    <details class="drawer" id="catalog">
-      <summary>
-        <span class="drawer-title">全語彙</span>
-        <span class="drawer-note" id="catalog-note">これから出る語も見える</span>
-      </summary>
-      <div class="criteria">
-        <p class="criteria-title">選ぶときの目安</p>
-        <ul>
-          <li>名前だけで少し引っかかる</li>
-          <li>由来に物語がある</li>
-          <li>知るとニュースや歴史、人間関係の見え方が少し変わる</li>
-          <li>教科書っぽすぎない（囚人のジレンマやシュレーディンガーの猫ほど有名なものは外す）</li>
-        </ul>
+    <section class="known" aria-labelledby="known-q">
+      <h2 class="known-q" id="known-q">この言葉、知ってた？</h2>
+      <div class="known-buttons">
+        <button type="button" class="known-btn" data-known="known" aria-pressed="false">知ってた</button>
+        <button type="button" class="known-btn" data-known="new" aria-pressed="false">知らなかった</button>
       </div>
-      <div class="catalog-groups" id="catalog-groups"></div>
-    </details>
+    </section>
+
+    <aside class="install-tip" id="install-tip" hidden>
+      <p class="install-title" data-phrase>ホーム画面に追加すると、アプリのように使えます</p>
+      <p class="install-body" data-phrase>iPhone：Safariの共有ボタンから「ホーム画面に追加」</p>
+      <p class="install-body" data-phrase>Android：Chromeのメニューから「ホーム画面に追加」</p>
+      <div class="install-actions">
+        <button type="button" class="pill-btn" id="install-btn" hidden>追加する</button>
+        <button type="button" class="text-btn" id="install-close">閉じる</button>
+      </div>
+    </aside>
   </main>
 
-  <footer class="colophon">
-    <p>日付は端末の時計で切り替わります。「知ってた／知らなかった」はこの端末のブラウザにだけ保存されます。</p>
-  </footer>
+  <main class="view" id="view-history" hidden>
+    <h1 class="view-title">これまでの言葉</h1>
+    <p class="view-lead jp" id="history-summary"></p>
+    <ol class="list" id="history-list"></ol>
+    <p class="note" data-phrase>日付は端末の時計で切り替わります。「知ってた」「知らなかった」の記録は、この端末にだけ保存されます。</p>
+  </main>
+
+  <main class="view" id="view-words" hidden>
+    <h1 class="view-title">ことば帳</h1>
+    <p class="view-lead jp" id="words-lead"></p>
+    <div class="filter" id="filter" aria-label="ジャンルで絞り込む"></div>
+    <ol class="list" id="words-list"></ol>
+    <section class="criteria">
+      <h2 class="label">言葉を選ぶときの目安</h2>
+      <ul>
+        <li data-phrase>名前だけで少し引っかかる</li>
+        <li data-phrase>由来に物語がある</li>
+        <li data-phrase>知るとニュースや歴史、人間関係の見え方が少し変わる</li>
+        <li data-phrase>教科書っぽすぎない（囚人のジレンマやシュレーディンガーの猫ほど有名なものは外す）</li>
+      </ul>
+    </section>
+  </main>
+
+  <nav class="tabbar" aria-label="画面の切り替え">
+    <div class="tabbar-inner">
+      <a class="tab" href="#today" data-tab="today">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
+        <span>今日</span>
+      </a>
+      <a class="tab" href="#history" data-tab="history">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v3.5h3.5"/><path d="M12 8v4.5l3 1.8"/></svg>
+        <span>これまで</span>
+      </a>
+      <a class="tab" href="#words" data-tab="words">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3H19v15H6.5a2 2 0 0 0 0 4H19"/><path d="M4.5 20V5a2 2 0 0 1 2-2"/></svg>
+        <span>ことば帳</span>
+      </a>
+    </div>
+  </nav>
 </div>
 
 <script src="data/words.js"></script>
 <script src="js/daily.js"></script>
+<script src="js/vendor/budoux-ja.js"></script>
+<script src="js/phrase.js"></script>
 <script src="js/app.js"></script>
 <!-- body:end -->
 </body>
