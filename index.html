@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="毎日ひとつ、知ると世界の見え方が少し変わる言葉を。">
+<!-- head:start -->
+<title>日々是衒学</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@1&family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="style.css">
+<!-- head:end -->
+</head>
+<body>
+<!-- body:start -->
+<div class="page">
+  <header class="masthead">
+    <p class="brand">日々是衒学</p>
+    <p class="tagline">毎日ひとつ、知ると世界の見え方が少し変わる言葉を。</p>
+  </header>
+
+  <main>
+    <article class="sheet" id="sheet" aria-live="polite">
+      <div class="perforation" aria-hidden="true"></div>
+      <header class="sheet-head">
+        <div class="date" id="date">
+          <span class="date-month" id="date-month"></span>
+          <span class="date-day" id="date-day"></span>
+          <span class="date-week" id="date-week"></span>
+        </div>
+        <div class="sheet-meta">
+          <span class="day-count" id="day-count"></span>
+          <span class="seal"><span class="sr-only" id="genre-label"></span><span aria-hidden="true" id="genre"></span></span>
+        </div>
+      </header>
+
+      <div class="headword">
+        <h1 class="term" id="term"></h1>
+        <p class="reading" id="reading"></p>
+        <p class="original" id="original" lang="en"></p>
+      </div>
+
+      <p class="gist" id="gist"></p>
+
+      <section class="block">
+        <h2 class="label">由来</h2>
+        <p id="story"></p>
+      </section>
+      <section class="block">
+        <h2 class="label">見え方が変わるところ</h2>
+        <p id="lens"></p>
+      </section>
+      <section class="block flex-block">
+        <h2 class="label">ひけらかすなら</h2>
+        <p class="flex-line" id="flex"></p>
+      </section>
+
+      <div class="known" role="group" aria-labelledby="known-label">
+        <span class="known-label" id="known-label">この語、知ってた？</span>
+        <div class="known-buttons">
+          <button type="button" class="chip" id="known-yes" data-known="known" aria-pressed="false">知ってた</button>
+          <button type="button" class="chip" id="known-no" data-known="new" aria-pressed="false">知らなかった</button>
+        </div>
+      </div>
+    </article>
+
+    <nav class="pager" id="pager" aria-label="日付の移動">
+      <button type="button" class="pager-btn" id="prev">‹ 前の日</button>
+      <button type="button" class="pager-btn pager-today" id="today">今日</button>
+      <button type="button" class="pager-btn" id="next">次の日 ›</button>
+    </nav>
+
+    <details class="drawer" id="archive">
+      <summary>
+        <span class="drawer-title">これまでの語</span>
+        <span class="drawer-note" id="archive-note"></span>
+      </summary>
+      <ol class="archive-list" id="archive-list"></ol>
+    </details>
+
+    <details class="drawer" id="catalog">
+      <summary>
+        <span class="drawer-title">全語彙</span>
+        <span class="drawer-note" id="catalog-note">これから出る語も見える</span>
+      </summary>
+      <div class="criteria">
+        <p class="criteria-title">選ぶときの目安</p>
+        <ul>
+          <li>名前だけで少し引っかかる</li>
+          <li>由来に物語がある</li>
+          <li>知るとニュースや歴史、人間関係の見え方が少し変わる</li>
+          <li>教科書っぽすぎない（囚人のジレンマやシュレーディンガーの猫ほど有名なものは外す）</li>
+        </ul>
+      </div>
+      <div class="catalog-groups" id="catalog-groups"></div>
+    </details>
+  </main>
+
+  <footer class="colophon">
+    <p>日付は端末の時計で切り替わります。「知ってた／知らなかった」はこの端末のブラウザにだけ保存されます。</p>
+  </footer>
+</div>
+
+<script src="data/words.js"></script>
+<script src="js/daily.js"></script>
+<script src="js/app.js"></script>
+<!-- body:end -->
+</body>
+</html>
