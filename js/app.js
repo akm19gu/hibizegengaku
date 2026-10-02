@@ -84,7 +84,7 @@
     el.classList.remove("squeezed");
     let size = parseFloat(getComputedStyle(el).fontSize);
     // 一番長い文節が一行に収まるまで少しずつ小さくする
-    while (el.scrollWidth > el.clientWidth + 1 && size > 20) {
+    while (el.scrollWidth > el.clientWidth + 1 && size > 18) {
       size -= 1;
       el.style.fontSize = `${size}px`;
     }
@@ -93,7 +93,16 @@
 
   function renderCard(word, direction) {
     shownWordId = word.id;
-    $("genre").textContent = word.genre;
+    // ジャンルの印は一文字ずつ縦に積み、「・」で区切られた名前は判子のように右から左へ二列に並べる
+    $("genre").replaceChildren(
+      ...word.genre.split("・").map((part) => {
+        const col = document.createElement("span");
+        col.className = "seal-col";
+        col.textContent = [...part].join("\n");
+        return col;
+      })
+    );
+    $("genre-label").textContent = `ジャンル：${word.genre}`;
     setTerm($("term"), word.term);
     $("reading").textContent = word.reading || "";
     $("reading").hidden = !word.reading;

@@ -6,5 +6,8 @@
   "scripts": {
     "test": "node --test",
     "start": "npx --yes serve ."
+  },
+  "devDependencies": {
+    "kuromoji": "^0.1.2"
   }
 }
