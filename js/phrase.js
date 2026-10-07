@@ -4,9 +4,9 @@
   const budoux = typeof module === "object" && module.exports ? require("./vendor/budoux-ja.js") : root.BudouXJa;
 
   // 見出し語は細かく割りすぎない（「結び｜目」のような割れを防ぐ）。
-  // 「・」「＝」「／」の直後と、助詞「の」「と」「は」「を」で終わる文節の後だけで折り返す。
+  // 「・」「＝」「／」の直後と、助詞「の」「と」「は」「を」「も」で終わる文節の後だけで折り返す。
   const BREAK_AFTER_MARK = "・＝／";
-  const BREAK_AFTER_PARTICLE = "のとはを";
+  const BREAK_AFTER_PARTICLE = "のとはをも";
 
   function cut(text, boundaries) {
     const result = [];
@@ -32,22 +32,37 @@
     "はかな", "寝そべり", "追い払う", "迷い込ん", "取り逃がし", "売り上げ", "振る舞い", "建て替え", "食い違う", "ただ中",
     "とどまる", "はびこり", "味わい深い", "追い求める", "ゆるみ", "込み入っ", "はみ出し", "さかのぼり", "振る舞っ", "食いつぶさ",
     "ゆがめる", "はやっ", "もう一度", "言い争い", "まるごと", "もしかして", "打ちのめさ", "木の葉", "にくい", "言い換える",
-    "入り組ん", "にくく", "取り調べる", "取り調べ",
+    "入り組ん", "にくく", "取り調べる", "取り調べ", "切り抜き", "燃え上がる", "送り込ん", "散り散り", "立てこもっ", "笑い話",
+    "追い詰め", "乗り切っ", "移り住ん", "ゆるやか", "みなし", "一喜一憂", "生き延び", "二の舞", "のぼっ", "切り替え",
+    "逃がさ", "思うつぼ", "削り取っ", "にかけて", "いくつ", "笑顔", "にこにこ", "ふるまい", "がち", "中西部",
+    "結びつい", "はげ", "ありあわせ", "歯みがき", "わたし", "とどめ", "言い当て", "盛り上がる", "か所", "開き直っ",
+    "手いっぱい", "ひっくり返っ", "売り買い", "にぎやか", "間違い", "見た目", "割り込ん", "当てはめ", "振る舞わ", "前向き",
+    "はず", "言い張っ", "とどまっ", "笑い", "はっきり", "一つひとつ", "だからといって", "うたい文句", "ある程度", "がたい",
+    "こうした", "捨て去ら", "乗り越え", "はしご", "言い争っ", "食い違っ",
   ];
 
-  function textPhrases(text) {
-    if (!text) return [];
+  // KEEP_TOGETHER の語の内側にあたる位置
+  function blockedPositions(text) {
     const blocked = new Set();
     for (const word of KEEP_TOGETHER) {
       for (let i = text.indexOf(word); i !== -1; i = text.indexOf(word, i + 1)) {
         for (let j = i + 1; j < i + word.length; j++) blocked.add(j);
       }
     }
+    return blocked;
+  }
+
+  function textPhrases(text) {
+    if (!text) return [];
+    const blocked = blockedPositions(text);
     return cut(text, budoux.parseBoundaries(text).filter((b) => !blocked.has(b)));
   }
 
   function termPhrases(term) {
-    const boundaries = budoux.parseBoundaries(term).filter((i) => BREAK_AFTER_PARTICLE.includes(term[i - 1]));
+    const blocked = blockedPositions(term);
+    const boundaries = budoux
+      .parseBoundaries(term)
+      .filter((i) => BREAK_AFTER_PARTICLE.includes(term[i - 1]) && !blocked.has(i));
     for (let i = 1; i < term.length; i++) {
       if (BREAK_AFTER_MARK.includes(term[i - 1])) boundaries.push(i);
     }

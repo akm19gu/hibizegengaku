@@ -10,7 +10,7 @@ const { WORDS } = require("../data/words.js");
 const ALLOWED = [
   "という", "っていう", "といった", "について", "によって", "による", "として", "に対し", "に対して",
   "に対する", "につれて", "にあたる", "にとって", "において", "をめぐって", "を通じて", "に際し",
-  "役に立た", "役に立つ",
+  "役に立た", "役に立つ", "にかけて", "に従って",
 ];
 const JAPANESE = /^[\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}ー々]+$/u;
 
