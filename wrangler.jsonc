@@ -1,0 +1,9 @@
+// Cloudflare Workers で、このリポジトリのアプリ本体のファイルだけを静的に公開する設定。
+// 公開しないファイルは .assetsignore に並べている。
+{
+  "name": "hibizegengaku",
+  "compatibility_date": "2026-10-06",
+  "assets": {
+    "directory": "."
+  }
+}

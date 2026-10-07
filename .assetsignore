@@ -1,0 +1,11 @@
+# Cloudflare に公開しないファイル（書き方は .gitignore と同じ）
+.git
+.gitignore
+.assetsignore
+.wrangler
+node_modules
+test
+package.json
+package-lock.json
+README.md
+wrangler.jsonc

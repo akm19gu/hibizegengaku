@@ -25,7 +25,9 @@ GitHub Pages などで公開したページを開き、ホーム画面に追加�
 - iPhone：Safari の共有ボタンから「ホーム画面に追加」
 - Android：Chrome のメニューから「ホーム画面に追加」（「インストール」と出ることもあります）
 
-一度開けば、オフラインでも動きます。GitHub Pages で公開するには、リポジトリの Settings → Pages でこのブランチのルートを公開元に指定してください。
+一度開けば、オフラインでも動きます。
+
+公開先は Cloudflare Workers（静的アセット）です。設定は `wrangler.jsonc` にあり、デプロイのコマンドは `npx wrangler deploy` です。リポジトリのルートをそのまま公開するので、公開しないファイル（`node_modules` やテストなど）は `.assetsignore` に並べています。GitHub Pages で公開する場合は、リポジトリの Settings → Pages でこのブランチのルートを公開元に指定してください。
 
 ## 開発
 
