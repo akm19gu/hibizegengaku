@@ -4,6 +4,7 @@
   const { setText, setTerm } = window.HibiPhrase;
 
   const WEEKDAYS = ["日", "月", "火", "水", "木", "金", "土"];
+  // 保存場所の名前は旧名のまま（変えると「知ってた」の記録が読めなくなる）
   const KNOWN_KEY = "hibizegengaku.known";
   const TIP_KEY = "hibizegengaku.installTipClosed";
   const $ = (id) => document.getElementById(id);
