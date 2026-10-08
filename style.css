@@ -108,11 +108,15 @@ svg {
 }
 
 /* ---- 上の題字 ---- */
+/* 上端の余白（ノッチなど）は top でずらさず、題字の帯の中に含める。
+   top でずらすと、余白を大きく報告するアプリ内ブラウザ（Instagram など）で、
+   帯がその下の日付の行に重なってしまう */
 .appbar {
   position: sticky;
-  top: env(safe-area-inset-top, 0px);
+  top: 0;
   z-index: 10;
-  height: 52px;
+  height: calc(52px + env(safe-area-inset-top, 0px));
+  padding-top: env(safe-area-inset-top, 0px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -128,7 +132,7 @@ svg {
 .appbar-back {
   position: absolute;
   left: -8px;
-  top: 4px;
+  top: calc(4px + env(safe-area-inset-top, 0px));
   height: 44px;
   display: flex;
   align-items: center;
