@@ -2485,7 +2485,6 @@
     },
     "habeas-corpus": {
       term: "Habeas corpus",
-      original: "habeas corpus",
       gist: "The right of someone held unlawfully to go to court, make the authorities justify the detention, and be freed if they can’t.",
       story: "From the opening words of the writ in Latin, “you shall have the body.” It arose in medieval England and was strengthened by the Habeas Corpus Act of 1679. It has been seen as a bulwark of liberty, preventing kings and officials from jailing people without giving a reason.",
       lens: "It was carried into the US Constitution, which says it may not be suspended except in cases of rebellion or invasion. Making the state explain why it’s holding someone looks obvious, but it’s a right won over centuries.",
@@ -2620,7 +2619,6 @@
     },
     "hare-and-ke": {
       term: "Hare and ke",
-      original: "hare and ke",
       gist: "A concept from Japanese folklore studies that divides time into hare, the extraordinary days of festivals and rituals, and ke, ordinary everyday life.",
       story: "The folklorist Kunio Yanagita drew attention to this distinction in how Japanese people lived. Hare appears in words for special occasions, such as festive clothes and a big day on stage, while ke is ordinary life. Later scholars proposed seeing kegare, a state where everyday vitality runs down, as something that hare restores.",
       lens: "You could say birthdays and trips feel special precisely because of ordinary ke days. It’s a useful idea for rethinking a modern life that exhausts itself trying to make every day a hare day.",
@@ -2720,7 +2718,6 @@
     },
     "marebito": {
       term: "Marebito",
-      original: "marebito",
       gist: "In Japanese folk belief, a god who visits at set times from another world, such as across the sea, bringing blessings.",
       story: "The scholar of literature and folklore Shinobu Orikuchi developed the idea. In the masked gods who appear at Okinawan festivals and the beings who visit homes at New Year, he saw the original form of Japan’s gods. Akita’s namahage and the Toshidon of Koshikijima in Kagoshima are said to preserve traces of the marebito.",
       lens: "One reading is that the custom of treating guests with great care carries an old sense of welcoming outsiders as gods. Travelers and transfer students start to look like bringers of fresh air to a community.",
@@ -2742,7 +2739,6 @@
     },
     "sfumato": {
       term: "Sfumato",
-      original: "sfumato",
       gist: "A painting technique that blurs the boundaries between colors like smoke, with no outlines, so tones shift softly into one another.",
       story: "Italian for “smoky.” Leonardo da Vinci is credited with perfecting it, and the soft, never-quite-defined shading around the mouth and eyes of the Mona Lisa is the classic example. He is thought to have built the effect from many extremely thin layers of paint.",
       lens: "One explanation for why the Mona Lisa’s smile seems different every time you look is that the corners of her mouth are deliberately blurred. Leaving things undefined can bring a face to life.",
@@ -2864,7 +2860,6 @@
     },
     "bricolage": {
       term: "Bricolage",
-      original: "bricolage",
       gist: "Making what you need by combining whatever materials and tools happen to be on hand.",
       story: "The French anthropologist Claude Lévi-Strauss used the term in his 1962 book The Savage Mind. He contrasted the “engineer,” who procures parts to fit a blueprint, with the bricoleur, the handyman who cleverly combines what’s already at hand, and saw in the latter the character of mythical thought.",
       lens: "Making dinner from leftovers in the fridge or rigging up a tool from spare parts is proper bricolage. You can also read it as the wisdom of starting without waiting for perfect materials.",
@@ -2936,7 +2931,6 @@
     },
     "longue-duree": {
       term: "Longue durée",
-      original: "longue durée",
       gist: "An approach to history that looks not at events and individuals but at structures, like geography, climate, and economics, that change slowly over centuries.",
       story: "The French historian Fernand Braudel of the Annales school set it out in works like his monumental The Mediterranean (1949). He divided history into three layers: the slow time of geography, the middle time of societies and economies, and the fast time of events, which he likened to foam on the crests of waves.",
       lens: "When the daily news threatens to toss you around, it invites you to look at the vast currents moving slowly underneath. Braudel is said to have worked out much of that great book in a prisoner-of-war camp during World War II.",
@@ -3134,7 +3128,6 @@
     },
     "lorem-ipsum": {
       term: "Lorem ipsum",
-      original: "lorem ipsum",
       gist: "Meaningless Latin-looking text poured into design mockups as a placeholder for real copy.",
       story: "It derives from a passage in a philosophical work on the ends of good and evil written by the Roman statesman Cicero in 45 BC. A sentence meaning roughly “nor is there anyone who loves pain itself” was chopped up and scrambled. It was used on sheets of transfer lettering in the 1960s and spread worldwide when it was built into desktop publishing software.",
       lens: "Its source was tracked down by an American Latin scholar, who followed the trail of a rarely used word. The often-repeated claim that it has been in use since the 16th century was, by the discoverer’s own later account, an unfounded guess.",
@@ -3396,7 +3389,6 @@
     },
     "liberum-veto": {
       term: "Liberum veto",
-      original: "liberum veto",
       gist: "A rule in early modern Poland under which a single legislator’s objection could nullify everything the parliament had decided.",
       story: "The parliament of the Polish-Lithuanian Commonwealth worked on the principle of unanimity, and from the mid-17th century one deputy’s cry of “I do not allow!” could dissolve an entire session, including everything already agreed. Foreign powers sometimes bribed deputies to halt the parliament, and the rule is considered one cause of the state’s decline.",
       lens: "A system meant to give every individual will the greatest respect ended up producing a state that couldn’t decide anything. It comes to mind whenever a meeting that demands unanimity spins its wheels.",
@@ -3496,7 +3488,6 @@
     },
     "sakoku-ron": {
       term: "Sakoku-ron",
-      original: "Sakoku-ron",
       gist: "The word sakoku, “closed country,” used for Japan’s Edo-period foreign policy, was actually a translation coined late in that era.",
       story: "In 1801 Shizuki Tadao, a Dutch interpreter in Nagasaki, translated part of a book by the German physician Engelbert Kaempfer and titled it Sakoku-ron, “On the Closed Country.” That is considered the origin of the word. People in the time of the third shogun, Iemitsu, who restricted foreign relations, didn’t call their policy sakoku.",
       lens: "In fact Japan kept up foreign contacts through “four gateways,” Nagasaki, Tsushima, Satsuma, and Matsumae, and recent textbooks have been reconsidering how to use the word. A name attached later can end up defining an era’s image.",
@@ -3704,7 +3695,6 @@
     },
     "narezushi": {
       term: "Narezushi",
-      original: "narezushi",
       gist: "The oldest form of sushi: fish packed in salt and rice and fermented over a long time.",
       story: "It’s thought to have originated as a way of preserving river fish in Southeast Asia and reached Japan by the Nara period. The rice was there to drive fermentation and was often discarded before eating. Funazushi, made from carp-like fish of Lake Biwa, still preserves the form today. Over the centuries fermentation times shortened, until sushi made with vinegar, ready to eat right away, was born.",
       lens: "Nigiri sushi, born toward the end of the Edo period, was a quick snack from street stalls, the fast food of its day. From sushi that took months to sushi made in seconds, sushi’s history is also a history of impatient people.",
@@ -3747,7 +3737,6 @@
     },
     "tamamushi-iro": {
       term: "Tamamushi-iro",
-      original: "tamamushi-iro",
       gist: "Japanese for “jewel-beetle color”: deliberately ambiguous wording or a settlement that each side can interpret its own way.",
       story: "The wings of the jewel beetle shift from green to purple depending on the angle you see them from. The Tamamushi Shrine at Hōryū-ji temple is famous for having been decorated with them. From this, an ambiguous agreement that lets both sides believe their view prevailed came to be called tamamushi-iro.",
       lens: "Ambiguous wording can help opposing sides reach a provisional agreement. But the problem is only postponed, and it tends to flare up again over interpretation. The line between wisdom that avoids conflict and plain evasion is always razor-thin.",
@@ -3785,7 +3774,6 @@
     },
     "jiaozi": {
       term: "Jiaozi",
-      original: "jiaozi",
       gist: "One of the world’s oldest paper currencies, born in China under the Northern Song dynasty in the 11th century.",
       story: "In Song-dynasty Sichuan, people used iron coins that were heavy and hard to carry. Merchants began issuing receipts for coins deposited with them, and these jiaozi changed hands in place of money. In the 1020s the government began issuing jiaozi itself.",
       lens: "Marco Polo, visiting China in the 13th century, wrote in amazement that the emperor had people use paper made from tree bark as money, like gold and silver. Mere paper becomes money when everyone believes in its value. Paper money is an invention that gives form to something invisible: trust.",
@@ -3870,7 +3858,6 @@
     },
     "aura-benjamin": {
       term: "Aura",
-      original: "Aura",
       gist: "The particular weight and glow a work of art has because it exists only once, here and now.",
       story: "The German thinker Walter Benjamin discussed it in his essay “The Work of Art in the Age of Mechanical Reproduction,” written around 1935. In an age when works can be copied endlessly through photography and film, the aura that belonged to the single original fades away. Yet Benjamin also saw in this the potential to open art up from a privileged few to the masses.",
       lens: "A painting you’ve seen countless times in books feels different when you stand before the original in a museum. The word tries to name that “something.” The electricity of a live concert may be a kind of aura too.",
@@ -3941,7 +3928,6 @@
     },
     "nemawashi": {
       term: "Nemawashi",
-      original: "nemawashi",
       gist: "Talking things through with the people involved and securing their agreement before a formal decision is made. Originally a gardening term.",
       story: "When transplanting a large tree, gardeners dig around its roots about a year ahead, cut the thick roots, and let fine new roots grow. That way the tree is less likely to die after the move. This work is called nemawashi, “going around the roots,” and from it the word came to mean the groundwork done in advance to make things go smoothly.",
       lens: "It’s sometimes introduced in English as nemawashi, as a hallmark of Japanese organizations. Like the tree whose roots are cut, it also shows consideration for people unsettled by sudden change. On the other hand, it’s criticized for letting the real debate happen outside the meeting.",
@@ -4006,7 +3992,6 @@
     },
     "kitsch": {
       term: "Kitsch",
-      original: "Kitsch",
       gist: "Cheap, sentimental, imitation beauty that pretends to be real art.",
       story: "The German word is thought to have come from the 19th-century Munich art market, where it described cheap pictures. In 1939 the American critic Clement Greenberg called mass-produced art offering easy emotion “kitsch” and set it against the avant-garde. The Czech-born novelist Milan Kundera later discussed it in The Unbearable Lightness of Being as a beauty that looks away from life’s inconvenient parts.",
       lens: "Today, though, it’s often used as praise, as in kitschy knickknacks enjoyed precisely for their cheapness. The line between bad taste and fun keeps moving with the times.",
@@ -4021,7 +4006,6 @@
     },
     "hyakusho-yomi": {
       term: "Hyakushō-yomi",
-      original: "hyakushō-yomi",
       gist: "In Japanese, misreading a kanji compound by following the sound of part of a character. Many such readings have become the standard.",
       story: "The word for “exhaustion,” for example, was originally read shōkō, but reading its second character like a similar-looking one gave shōmō, which is now the normal reading. The word for “export” was once read shushutsu and became yushutsu. Many other words have followed the same path.",
       lens: "Because the name, literally “peasant reading,” looks down on people who didn’t know the “correct” reading, it’s now often called “customary reading” instead. A reading that started as a mistake becomes correct once enough people use it. Correctness in language is often decided by its speakers.",
@@ -4395,7 +4379,6 @@
     },
     "art-brut": {
       term: "Art brut",
-      original: "art brut",
       gist: "Art made by people without formal art training, from an inner impulse, unconcerned with critics or fashion.",
       story: "French for “raw art.” The French painter Jean Dubuffet named it in the 1940s and collected works by psychiatric patients and self-taught makers. In English it’s also called outsider art. In Japan, too, works born in social welfare settings have come to be highly praised abroad.",
       lens: "Doodles in a notebook never meant for anyone’s eyes can shake viewers deeply. The term teaches you to meet artworks with a yardstick other than skill.",
@@ -4445,7 +4428,6 @@
     },
     "flaneur": {
       term: "Flâneur",
-      original: "flâneur",
       gist: "Someone who wanders city streets without purpose, enjoying watching the people and the life of the city.",
       story: "French for “stroller” or “idler.” In 19th-century Paris, the poet Charles Baudelaire portrayed him as an artist who immerses himself in the crowd while observing the city’s changes. In the 20th century the thinker Walter Benjamin made the flâneur strolling the covered arcades of Paris a key to reading the modern city.",
       lens: "Put away your phone’s map and wander down an unfamiliar alley, and even a city you know well becomes a stage for observation. Benjamin also recorded the anecdote that it was once fashionable in Paris to take a tortoise for a walk on a leash.",
@@ -4460,7 +4442,6 @@
     },
     "katatagae": {
       term: "Katatagae",
-      original: "katatagae",
       gist: "In Heian-period Japan, when the direction of your destination was considered unlucky, you first spent the night somewhere in another direction to change your bearing before setting out.",
       story: "In Onmyōdō, the Japanese system of yin-yang divination, heading straight toward a direction where certain deities were traveling was thought to bring misfortune. So aristocrats would move to another place the night before, stay over, and set out having “changed direction.” In The Tale of Genji, the hero Genji meets the lady Utsusemi at a house he visits for exactly this reason.",
       lens: "It seems like a tiresome rule, but it also served as a pretext for visiting and staying over with people, leading to unexpected encounters. Taking the long way around for luck has a proper traditional name.",
@@ -4496,7 +4477,6 @@
     },
     "jodai-tokushu-kanazukai": {
       term: "Jōdai tokushu kanazukai",
-      original: "jōdai tokushu kanazukai",
       gist: "Spelling distinctions in the earliest written Japanese showing that around the Nara period, sounds like today’s ki and ko each came in two varieties.",
       story: "In works like the Kojiki and the Man’yōshū, the Chinese characters used to write the sound ko, for example, split into two groups, each used for particular words and never mixed. In the Edo period, Ishizuka Tatsumaro, a student of the scholar Motoori Norinaga, noticed this and collected examples, and in the 1910s the linguist Shinkichi Hashimoto showed that it reflected real differences in pronunciation.",
       lens: "This gave rise to the theory that Japanese then had eight vowels rather than today’s five. The poems of the Man’yōshū may have been recited with a quite different sound from today.",
@@ -4511,7 +4491,6 @@
     },
     "damnatio-memoriae": {
       term: "Damnatio memoriae",
-      original: "damnatio memoriae",
       gist: "In ancient Rome, chiseling the names and faces of people to be erased from memory off inscriptions and statues. “Condemnation of memory.”",
       story: "The Latin phrase itself was coined in modern times. The third-century emperor Caracalla, for example, after murdering his brother Geta, had his name removed from inscriptions and his face erased from family portraits. A family portrait with only Geta’s face scrubbed out survives to this day.",
       lens: "The traces of erasure end up proclaiming all the more loudly that someone was there. From Soviet photos with people airbrushed out onward, power that tries to rewrite memory keeps reappearing in new forms.",
@@ -4540,7 +4519,6 @@
     },
     "japonisme": {
       term: "Japonisme",
-      original: "Japonisme",
       gist: "The craze for ukiyo-e prints and other Japanese art in late-19th-century Europe, and its influence on many painters.",
       story: "After Japan opened to the world, Japanese artworks flowed into Europe through the Paris world’s fairs and elsewhere. Ukiyo-e, with their bold compositions, flat areas of color, and scenes of everyday life, stunned painters like Monet, Van Gogh, and Degas. Van Gogh even copied prints by Utagawa Hiroshige in oil.",
       lens: "A story often told says a painter discovered Hokusai’s sketchbooks used as packing paper for exported porcelain, but how true it is isn’t known. Realizing that part of what was “new” in Western painting came from Japanese pictures of daily life changes how a museum looks.",
@@ -4569,7 +4547,6 @@
     },
     "tsukumogami": {
       term: "Tsukumogami",
-      original: "tsukumogami",
       gist: "In Japanese folklore, household objects that gain a soul after many years and turn into spirits.",
       story: "Muromachi-period picture scrolls such as the Tsukumogami Emaki tell of old tools, discarded after nearly a hundred years of use, that resent humans and become monsters. This gave rise to the idea of holding a memorial for old tools before throwing them out in the year-end cleaning.",
       lens: "The tale that things will haunt you if you don’t treat them well also expresses the feeling that objects used for a long time carry the time spent with their owners. When it’s hard to throw away a bag or a pot you’ve used for years, that feeling has a name.",
@@ -4612,7 +4589,6 @@
     },
     "betsubara": {
       term: "Betsubara",
-      original: "betsubara",
       gist: "Japanese for “a separate stomach”: being too full to eat another bite yet still having room for dessert. Science can explain some of it.",
       story: "Keep eating the same food and your satisfaction with that flavor drops, while appetite returns for something different. This is called sensory-specific satiety, and it was studied extensively in the 1980s. Dessert goes down after a meal partly because it’s a new taste after you’ve filled up on savory food.",
       lens: "In 2025 a research team in Germany reported that when full mice ate sugar, their brains released a pleasure-giving substance, making headlines as part of the mechanism behind the dessert stomach. Betsubara isn’t just an excuse; it’s a property of brain and body.",
