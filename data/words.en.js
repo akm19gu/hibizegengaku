@@ -1302,7 +1302,7 @@
       gist: "A chess-playing automaton that amazed 18th-century Europe. In reality, a skilled human chess player was hidden inside its cabinet.",
       story: "The Hungarian-born inventor Wolfgang von Kempelen unveiled it in 1770 at the court of the Austrian empress Maria Theresa. A figure in Turkish dress moved the pieces with its mechanical arm and defeated one notable opponent after another; Napoleon and Benjamin Franklin are said to have played it. Its secret stayed hidden for decades, and Edgar Allan Poe wrote an essay reasoning that there must be a person inside.",
       lens: "In 2005 Amazon named its service for farming out small tasks that AI still found hard to crowds of people online “Mechanical Turk.” Inside something that seems to be a machine thinking, human hands are hidden. The pattern hasn’t changed.",
-      flex: "“Generated automatically by AI”? I bet someone pulled an all-nighter behind that. I smell a Mechanical Turk.",
+      flex: "The label says it was generated automatically by AI. I bet someone pulled an all-nighter behind it. I smell a Mechanical Turk.",
     },
     "wow-signal": {
       term: "Wow! signal",
@@ -1344,7 +1344,7 @@
       gist: "Take one grain of sand from a heap and it’s still a heap. Keep going, and is it still a heap when only one grain is left?",
       story: "It’s attributed to the ancient Greek philosopher Eubulides. Stacking up a perfectly reasonable premise, that one grain doesn’t make the difference between a heap and not a heap, leads to an absurd conclusion. The name comes from the Greek soros, “heap.”",
       lens: "Words with fuzzy boundaries, like “adult,” “many,” or “bald,” are everywhere. It connects to the difficulty of drawing lines: at what age are you an adult, and at what point does staying late become overtime?",
-      flex: "“Just one more won’t hurt,” every day, and now my desk is buried. Sorites paradox.",
+      flex: "I told myself one more paper on the pile wouldn’t hurt, every day, and now my desk is buried. Sorites paradox.",
     },
     "red-herring": {
       term: "Red herring",
