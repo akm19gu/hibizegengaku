@@ -1,12 +1,16 @@
 // オフラインでも開けるようにするためのサービスワーカー。
 // アプリ本体はネットワーク優先（更新がすぐ届く）、フォントはキャッシュ優先。
-const CACHE = "nichinichikoregengaku-v6";
+const CACHE = "nichinichikoregengaku-v7";
 const SHELL = [
   "./",
   "index.html",
   "style.css",
   "manifest.webmanifest",
   "data/words.js",
+  "data/words.en.js",
+  "en/",
+  "en/index.html",
+  "en/manifest.webmanifest",
   "js/daily.js",
   "js/phrase.js",
   "js/vendor/budoux-ja.js",
@@ -63,7 +67,12 @@ self.addEventListener("fetch", (event) => {
       .catch(() =>
         caches
           .match(request, { ignoreSearch: true })
-          .then((hit) => hit || (request.mode === "navigate" ? caches.match("index.html") : Response.error()))
+          .then((hit) => {
+            if (hit) return hit;
+            if (request.mode !== "navigate") return Response.error();
+            // オフラインで開いたときは、英語版なら英語の画面を返す
+            return caches.match(/\/en(\/|$)/.test(url.pathname) ? "en/index.html" : "index.html");
+          })
       )
   );
 });

@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="One word a day for the gloriously pedantic. Learn a word that quietly changes how you see the news, history and people.">
+<meta name="theme-color" content="#e6eae6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101418" media="(prefers-color-scheme: dark)">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Know-It-All">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Know-It-All Daily">
+<meta property="og:description" content="One word a day for the gloriously pedantic.">
+<meta name="twitter:card" content="summary">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<link rel="alternate" hreflang="ja" href="../">
+<link rel="alternate" hreflang="en" href="./">
+<!-- head:start -->
+<title>Know-It-All Daily</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Shippori+Mincho:wght@700;800&display=swap">
+<link rel="stylesheet" href="../style.css">
+<!-- head:end -->
+</head>
+<body>
+<!-- body:start -->
+<div class="app" lang="en">
+  <header class="appbar">
+    <button type="button" class="appbar-back" id="back" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      <span>Lexicon</span>
+    </button>
+    <p class="appbar-title">Know-It-All Daily</p>
+  </header>
+
+  <!-- 今日の言葉（日付の移動つき）と、ことば帳から開いた言葉 -->
+  <main class="view" id="view-card">
+    <div class="day-switch" id="day-switch">
+      <button type="button" class="round-btn" id="prev" aria-label="Previous day">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <div class="day-label" aria-live="polite">
+        <p class="day-date" id="day-date"></p>
+        <p class="day-count" id="day-count"></p>
+      </div>
+      <button type="button" class="round-btn" id="next" aria-label="Next day">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+    <button type="button" class="pill-btn" id="to-today" hidden>Back to today</button>
+    <p class="detail-when" id="detail-when" hidden></p>
+
+    <article class="card" id="card">
+      <div class="card-head">
+        <div class="headword">
+          <h1 class="term jp" id="term"></h1>
+          <p class="reading" id="reading"></p>
+          <p class="original" id="original"></p>
+          <p class="genre-name" id="genre-name"></p>
+        </div>
+        <p class="seal"><span class="sr-only" id="genre-label"></span><span class="seal-cols" aria-hidden="true" id="genre"></span></p>
+      </div>
+      <section class="gist-block">
+        <h2 class="label">In short</h2>
+        <p class="gist jp" id="gist"></p>
+      </section>
+      <section class="block">
+        <h2 class="label">The story</h2>
+        <p class="jp" id="story"></p>
+      </section>
+      <section class="block">
+        <h2 class="label">The lens</h2>
+        <p class="jp" id="lens"></p>
+      </section>
+      <section class="block flex-block">
+        <h2 class="label">Drop it casually</h2>
+        <p class="flex-line jp" id="flex"></p>
+      </section>
+    </article>
+
+    <section class="known" aria-labelledby="known-q">
+      <h2 class="known-q" id="known-q">Did you know this one?</h2>
+      <div class="known-buttons">
+        <button type="button" class="known-btn" data-known="known" aria-pressed="false">Knew it</button>
+        <button type="button" class="known-btn" data-known="new" aria-pressed="false">New to me</button>
+      </div>
+    </section>
+
+    <aside class="install-tip" id="install-tip" hidden>
+      <p class="install-title">Add it to your home screen to use it like an app</p>
+      <p class="install-body">iPhone: tap Share in Safari, then “Add to Home Screen”</p>
+      <p class="install-body">Android: open the Chrome menu, then “Add to Home screen”</p>
+      <div class="install-actions">
+        <button type="button" class="pill-btn" id="install-btn" hidden>Add</button>
+        <button type="button" class="text-btn" id="install-close">Close</button>
+      </div>
+    </aside>
+
+    <p class="lang-switch"><a href="../" data-lang-switch="ja" lang="ja">日本語で読む：日々是衒学</a></p>
+  </main>
+
+  <main class="view" id="view-history" hidden>
+    <h1 class="view-title">So far</h1>
+    <p class="view-lead jp" id="history-summary"></p>
+    <ol class="list" id="history-list"></ol>
+    <p class="note">A new word arrives each day by your device’s clock. Your “Knew it” and “New to me” marks are saved on this device only.</p>
+  </main>
+
+  <main class="view" id="view-words" hidden>
+    <h1 class="view-title">Lexicon</h1>
+    <p class="view-lead jp" id="words-lead"></p>
+    <div class="filter" id="filter" aria-label="Filter by category"></div>
+    <ol class="list" id="words-list"></ol>
+    <section class="criteria">
+      <h2 class="label">How we pick the words</h2>
+      <ul>
+        <li>The name alone makes you curious</li>
+        <li>There’s a story behind it</li>
+        <li>Knowing it changes how you see the news, history or people</li>
+        <li>Not too textbook (so nothing as famous as the prisoner’s dilemma or Schrödinger’s cat)</li>
+      </ul>
+    </section>
+    <p class="lang-switch"><a href="../" data-lang-switch="ja" lang="ja">日本語で読む：日々是衒学</a></p>
+  </main>
+
+  <nav class="tabbar" aria-label="Sections">
+    <div class="tabbar-inner">
+      <a class="tab" href="#today" data-tab="today">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
+        <span>Today</span>
+      </a>
+      <a class="tab" href="#history" data-tab="history">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v3.5h3.5"/><path d="M12 8v4.5l3 1.8"/></svg>
+        <span>So far</span>
+      </a>
+      <a class="tab" href="#words" data-tab="words">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3H19v15H6.5a2 2 0 0 0 0 4H19"/><path d="M4.5 20V5a2 2 0 0 1 2-2"/></svg>
+        <span>Lexicon</span>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<script src="../data/words.js"></script>
+<script src="../data/words.en.js"></script>
+<script src="../js/daily.js"></script>
+<script src="../js/vendor/budoux-ja.js"></script>
+<script src="../js/phrase.js"></script>
+<script src="../js/app.js"></script>
+<!-- body:end -->
+</body>
+</html>

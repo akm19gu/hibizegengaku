@@ -13,6 +13,22 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="alternate" hreflang="ja" href="./">
+<link rel="alternate" hreflang="en" href="en/">
+<script>
+  // 日本語を使っていない端末で初めて開いたら、英語版へ案内する。
+  // 画面の言語リンクで選び直したあとは、その選択に従う。ホーム画面から開いたときは動かさない。
+  (function () {
+    try {
+      if (window.self !== window.top) return;
+      if (matchMedia("(display-mode: standalone)").matches || navigator.standalone) return;
+      var saved = JSON.parse(localStorage.getItem("nichinichikoregengaku.lang"));
+      var langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ""];
+      var ja = langs.some(function (l) { return /^ja\b/i.test(l); });
+      if (saved === "en" || (saved === null && !ja)) location.replace("en/" + location.hash);
+    } catch (e) {}
+  })();
+</script>
 <!-- head:start -->
 <title>日々是衒学</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -93,6 +109,8 @@
         <button type="button" class="text-btn" id="install-close">閉じる</button>
       </div>
     </aside>
+
+    <p class="lang-switch"><a href="en/" data-lang-switch="en" lang="en">Read in English: Know-It-All Daily</a></p>
   </main>
 
   <main class="view" id="view-history" hidden>
@@ -116,6 +134,7 @@
         <li data-phrase>教科書っぽすぎない（囚人のジレンマやシュレーディンガーの猫ほど有名なものは外す）</li>
       </ul>
     </section>
+    <p class="lang-switch"><a href="en/" data-lang-switch="en" lang="en">Read in English: Know-It-All Daily</a></p>
   </main>
 
   <nav class="tabbar" aria-label="画面の切り替え">

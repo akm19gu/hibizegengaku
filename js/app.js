@@ -1,12 +1,50 @@
 (function () {
-  const { GENRES, WORDS } = window.HibiWords;
+  const { GENRES, WORDS: JA_WORDS } = window.HibiWords;
   const { indexForDate, dateForIndex, wordForIndex } = window.HibiDaily;
   const { setText, setTerm } = window.HibiPhrase;
 
+  // 英語版（en/index.html）は <html lang="en"> で、data/words.en.js の英語の本文を同じ id で重ねる。
+  // 出題順と日付は日本語版と同じ。英語がまだない語は missing にして一覧には出さない。
+  const LANG = document.documentElement.lang === "en" ? "en" : "ja";
+  const EN = LANG === "en" ? (window.HibiWordsEn && window.HibiWordsEn.WORDS) || {} : null;
+  const WORDS = EN
+    ? JA_WORDS.map((w) => (EN[w.id] ? { ...EN[w.id], id: w.id, genre: w.genre } : { id: w.id, genre: w.genre, missing: true }))
+    : JA_WORDS;
+  const ready = (w) => !w.missing;
+  const GENRE_EN = {
+    "歴史": "History",
+    "社会": "Society",
+    "心理": "Psychology",
+    "哲学・思考": "Philosophy",
+    "文学": "Literature",
+    "芸術": "Art & Film",
+    "宗教・神話": "Religion & Myth",
+    "科学": "Science",
+    "数理・情報": "Math & Computing",
+    "言葉": "Language",
+    "建築・都市": "Architecture & Cities",
+    "医学・からだ": "Medicine & Body",
+    "政治・法": "Politics & Law",
+    "経済・お金": "Economics & Money",
+    "音楽": "Music",
+    "食": "Food",
+    "地理・地球": "Geography & Earth",
+    "生き物": "Living Things",
+    "宇宙": "Space",
+    "技術・発明": "Technology",
+  };
+  const genreName = (g) => (EN ? GENRE_EN[g] || g : g);
+  // 英語は文節の処理をせず、そのまま入れる
+  const put = EN ? (el, text) => { el.textContent = text; } : setText;
+  const putTerm = EN ? (el, text) => { el.textContent = text; } : setTerm;
+
   const WEEKDAYS = ["日", "月", "火", "水", "木", "金", "土"];
+  const WEEKDAYS_EN = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const MONTHS_EN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   // 保存場所の名前は旧名のまま（変えると「知ってた」の記録が読めなくなる）
   const KNOWN_KEY = "hibizegengaku.known";
   const TIP_KEY = "hibizegengaku.installTipClosed";
+  const LANG_KEY = "nichinichikoregengaku.lang";
   const $ = (id) => document.getElementById(id);
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   // claude.ai のプレビューなど、別のページに埋め込まれて表示されているか
@@ -45,8 +83,12 @@
     }
   }
 
-  const longDate = (d) => `${d.getMonth() + 1}月${d.getDate()}日（${WEEKDAYS[d.getDay()]}）`;
-  const shortDate = (d) => `${d.getMonth() + 1}/${d.getDate()}（${WEEKDAYS[d.getDay()]}）`;
+  const longDate = (d) =>
+    EN
+      ? `${WEEKDAYS_EN[d.getDay()]}, ${MONTHS_EN[d.getMonth()]} ${d.getDate()}`
+      : `${d.getMonth() + 1}月${d.getDate()}日（${WEEKDAYS[d.getDay()]}）`;
+  const shortDate = (d) =>
+    EN ? `${MONTHS_EN[d.getMonth()]} ${d.getDate()}` : `${d.getMonth() + 1}/${d.getDate()}（${WEEKDAYS[d.getDay()]}）`;
 
   // 今の周回で、その語が何日目に出るか
   function indexInCycle(id) {
@@ -61,7 +103,7 @@
     let m = hash.match(/^#day-(\d+)$/);
     if (m) return { view: "day", index: Math.min(Math.max(Number(m[1]) - 1, 0), todayIndex) };
     m = hash.match(/^#w-([a-z0-9-]+)$/);
-    if (m && WORDS.some((w) => w.id === m[1])) return { view: "word", id: m[1] };
+    if (m && WORDS.some((w) => w.id === m[1] && ready(w))) return { view: "word", id: m[1] };
     return { view: "day", index: todayIndex };
   }
 
@@ -103,16 +145,27 @@
         return col;
       })
     );
-    $("genre-label").textContent = `ジャンル：${word.genre}`;
-    setTerm($("term"), word.term);
+    $("genre-label").textContent = EN ? `Category: ${genreName(word.genre)}` : `ジャンル：${word.genre}`;
+    if (EN) $("genre-name").textContent = genreName(word.genre);
+    if (word.missing) {
+      // 英語の本文がまだない日
+      $("term").textContent = "Coming soon";
+      for (const id of ["reading", "original"]) $(id).hidden = true;
+      $("gist").textContent = "This word hasn’t been translated yet. Check back soon.";
+      for (const id of ["story", "lens", "flex"]) $(id).textContent = "";
+      renderKnown();
+      return;
+    }
+    putTerm($("term"), word.term);
     $("reading").textContent = word.reading || "";
     $("reading").hidden = !word.reading;
-    $("original").textContent = word.original;
-    setText($("gist"), word.gist);
-    setText($("story"), word.story);
-    setText($("lens"), word.lens);
-    // かぎかっこで囲むので、閉じかっこの直前の句点は省く
-    setText($("flex"), `「${word.flex.replace(/。$/, "")}」`);
+    $("original").textContent = word.original || "";
+    $("original").hidden = !word.original;
+    put($("gist"), word.gist);
+    put($("story"), word.story);
+    put($("lens"), word.lens);
+    // かっこで囲むので、閉じかっこの直前の句点は省く
+    put($("flex"), EN ? `“${word.flex}”` : `「${word.flex.replace(/。$/, "")}」`);
     renderKnown();
     fitTerm();
 
@@ -137,7 +190,11 @@
     $("detail-when").hidden = true;
     $("back").hidden = true;
     $("day-date").textContent = longDate(dateForIndex(index));
-    $("day-count").textContent = index === todayIndex ? `第${index + 1}日・今日` : `第${index + 1}日`;
+    $("day-count").textContent = EN
+      ? `Day ${index + 1}${index === todayIndex ? " · Today" : ""}`
+      : index === todayIndex
+        ? `第${index + 1}日・今日`
+        : `第${index + 1}日`;
     $("prev").disabled = index <= 0;
     $("next").disabled = index >= todayIndex;
     $("to-today").hidden = index === todayIndex;
@@ -153,15 +210,21 @@
     $("to-today").hidden = true;
     $("back").hidden = false;
     $("detail-when").hidden = false;
-    $("detail-when").textContent = index <= todayIndex ? `${when}の言葉（第${index + 1}日）` : `${when}に登場予定`;
+    $("detail-when").textContent = EN
+      ? index <= todayIndex
+        ? `Word of the day for ${when} (Day ${index + 1})`
+        : `Coming up on ${when}`
+      : index <= todayIndex
+        ? `${when}の言葉（第${index + 1}日）`
+        : `${when}に登場予定`;
     renderCard(word, 0);
   }
 
   // ---- 一覧 ----
 
   function statusFor(id) {
-    if (known[id] === "known") return { text: "知ってた", cls: "is-known" };
-    if (known[id] === "new") return { text: "知らなかった", cls: "is-new" };
+    if (known[id] === "known") return { text: EN ? "Knew it" : "知ってた", cls: "is-known" };
+    if (known[id] === "new") return { text: EN ? "New to me" : "知らなかった", cls: "is-new" };
     return null;
   }
 
@@ -183,12 +246,12 @@
     }
     const t = document.createElement("span");
     t.className = "row-term jp";
-    setTerm(t, term);
+    putTerm(t, term);
     main.append(t);
     if (gist) {
       const g = document.createElement("span");
       g.className = "row-gist jp";
-      setText(g, gist);
+      put(g, gist);
       main.append(g);
     }
     a.append(main);
@@ -210,12 +273,13 @@
     let u = 0;
     for (let i = todayIndex; i >= 0; i--) {
       const word = wordForIndex(WORDS, i);
+      if (!ready(word)) continue;
       if (known[word.id] === "known") k++;
       if (known[word.id] === "new") u++;
       list.append(
         makeRow({
           href: `#day-${i + 1}`,
-          date: i === todayIndex ? `${shortDate(dateForIndex(i))}・今日` : shortDate(dateForIndex(i)),
+          date: i === todayIndex ? `${shortDate(dateForIndex(i))}${EN ? " · Today" : "・今日"}` : shortDate(dateForIndex(i)),
           term: word.term,
           status: statusFor(word.id),
           current: i === shownDayIndex,
@@ -223,8 +287,13 @@
       );
     }
     const days = todayIndex + 1;
-    const marked = k + u > 0 ? `そのうち「知ってた」が${k}語、「知らなかった」が${u}語。` : "";
-    setText($("history-summary"), `これまでに${days}語の言葉に出会いました。${marked}`);
+    if (EN) {
+      const marked = k + u > 0 ? ` You knew ${k} of them and ${u} were new to you.` : "";
+      put($("history-summary"), `You’ve met ${days} word${days === 1 ? "" : "s"} so far.${marked}`);
+    } else {
+      const marked = k + u > 0 ? `そのうち「知ってた」が${k}語、「知らなかった」が${u}語。` : "";
+      setText($("history-summary"), `これまでに${days}語の言葉に出会いました。${marked}`);
+    }
   }
 
   function renderFilter() {
@@ -235,7 +304,7 @@
         b.type = "button";
         b.className = "filter-chip";
         b.dataset.genre = genre || "";
-        b.textContent = genre || "すべて";
+        b.textContent = genre ? genreName(genre) : EN ? "All" : "すべて";
         wrap.append(b);
       }
     }
@@ -246,11 +315,10 @@
 
   function renderWords() {
     renderFilter();
-    const words = genreFilter ? WORDS.filter((w) => w.genre === genreFilter) : WORDS;
-    setText(
-      $("words-lead"),
-      `全${WORDS.length}語。まだ登場していない言葉には、登場する日を表示しています。`
-    );
+    const all = WORDS.filter(ready);
+    const words = genreFilter ? all.filter((w) => w.genre === genreFilter) : all;
+    if (EN) put($("words-lead"), `All ${all.length} words. Words that haven’t appeared yet show the day they will.`);
+    else setText($("words-lead"), `全${WORDS.length}語。まだ登場していない言葉には、登場する日を表示しています。`);
     const list = $("words-list");
     list.replaceChildren();
     for (const word of words) {
@@ -411,11 +479,17 @@
   });
 
   if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol) && !embedded) {
-    navigator.serviceWorker.register("sw.js").catch(() => {});
+    // 英語版も、サイトの一番上にあるサービスワーカーを共有する
+    navigator.serviceWorker.register(EN ? "../sw.js" : "sw.js", { scope: EN ? "../" : "./" }).catch(() => {});
   }
 
-  // 画面に書いてある固定の文章も文節で折り返す
-  for (const el of document.querySelectorAll("[data-phrase]")) setText(el, el.textContent.trim());
+  // 言語の切り替えのリンクを押したら、その言語を覚えておく
+  for (const a of document.querySelectorAll("[data-lang-switch]")) {
+    a.addEventListener("click", () => save(LANG_KEY, a.dataset.langSwitch));
+  }
+
+  // 画面に書いてある固定の文章も文節で折り返す（日本語版だけ）
+  if (!EN) for (const el of document.querySelectorAll("[data-phrase]")) setText(el, el.textContent.trim());
 
   render();
 })();
